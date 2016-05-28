@@ -7,7 +7,7 @@ var errorMsg = require('../errors.json');
 
 
 
-function checkValid(checkIsTrue,res,type){
+function checkValid(checkIsTrue,type){
   if(!checkIsTrue){
     throw errorMsg[type]
   }
@@ -19,7 +19,7 @@ router.get('/',function(req,res){
 
 router.post('/add',function(req,res){
   user = new User;
-  checkValid(validator.isEmail(req.body.email),res,1);
+  checkValid(validator.isEmail(req.body.email),1);
   user.set(req.body);
   user.generatePassword(req.body.password)
   .then(function(data){
@@ -31,16 +31,19 @@ router.post('/add',function(req,res){
   })
 })
 
+
 router.post('/login',function(req,res){
   User.where({email:req.body.email})
   .fetch()
   .then(function(user){
-      checkValid(user,res,1);
-      return user && user.validatePassword(req.body.password, user.attributes.password)
+    checkValid(user,1);
+    req.user = user && user.attributes;
+    return user && user.validatePassword(req.body.password);
   })
   .then(function(result){
-    checkValid(result,res,2);
-    var token = jwt.sign({name:"andrew"},'secret');
+    delete req.user.password
+    checkValid(result,2);
+    var token = jwt.sign(req.user,'secret');
     res.send(token)
   })
   .catch(function(err){
@@ -49,3 +52,5 @@ router.post('/login',function(req,res){
 })
 
 module.exports = router
+
+

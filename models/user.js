@@ -17,8 +17,8 @@ var User = Bookshelf.Model.extend({
       return self
     })
   },
-  validatePassword: function(password,hash){
-    return bcrypt.compareAsync(password, hash)
+  validatePassword: function(password){
+    return bcrypt.compareAsync(password, this.get(password))
   }
 });
 
