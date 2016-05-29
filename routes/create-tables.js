@@ -9,7 +9,7 @@ router.get('/maketables', function(req,res){
     table.increments();
     table.string('name');
     table.string('password');
-    table.string('email');
+    table.string('email').unique();
     table.string('address');
     table.timestamps(true);
   })

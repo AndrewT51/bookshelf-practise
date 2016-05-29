@@ -1,20 +1,51 @@
 [
   {
     "name":"Andrew",
-    "password":"drowssap",
-    "email":"a@a.com",
+    "password":"$2a$10$XbWSSrHZtySFKGDUkesMpuwKfMQQZpJOVBZnJVX0XSvhn.b/tTEFm",
+    "email":"andrewt51@hotmail.com",
     "address":1
   },
   {
     "name":"Ricky",
-    "password":"drowssap",
-    "email":"r@r.com",
+    "password":"$2y$10$oKpNxQb9adKdG5zqUMpumupomQAHz/7WtBmbU0Utp.cLML8CjpmTG",
+    "email":"rickster@tocomail.com",
     "address": 2
   },
   {
-    "name":"Cole",
-    "password":"drowssap",
-    "email":"c@c.com",
+    "name":"Shirley",
+    "password":"$2a$10$XOwk5lksIwM7PKlpUElLuuUnoDyTvr9K8jJKULkVpeEkz8UNSLbd.",
+    "email":"sford@gmail.com",
     "address":3
+  },
+  {
+    "name":"Brian",
+    "password":"$2y$10$8IF8.8UTD5Ffjztp0BfWzucO6M5ueD5jTE186UNvFMGxlkGUNEljK",
+    "email":"b_jones@gmail.com",
+    "address":4
+  },
+  {
+    "name":"William",
+    "password":"$2a$10$4NFkhneB/FD1zWh8IG/XtuYzGSsxM.RuRskX64/W0mX8RXQVfT7dW",
+    "email":"will345@yahoo.co.uk",
+    "address":5
+  },
+  {
+    "name":"Shaun",
+    "password":"$2y$10$.ZqAIpQzpnbLpWzu//.aFuBxqMataOfrFr16fAhfRZEKSLL7PaWMC",
+    "email":"sands@gmail.com",
+    "address":6
+  },
+  {
+    "name":"Gemma",
+    "password":"$2a$10$LOA5TzIRlyR5G1gfVDrGHuHYf6LCh0sKkoMDK7bSAh18jTRq3vvju",
+    "email":"gems99@hotmail.co.uk",
+    "address":7
+  },
+  {
+    "name": "Cole",
+    "email": "c.trigg@gmail.com",
+    "password": "$2a$10$YtZFaSt51zuzy6oy4pamNOCbdf6Qul9quUyBqp1FDNT6XiGBP7gMu",
+    "address":8
   }
+
 ]

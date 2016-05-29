@@ -5,17 +5,11 @@ var jwt = require('jsonwebtoken');
 var validator = require('validator');
 var errorMsg = require('../errors.json');
 
-
-
 function checkValid(checkIsTrue,type){
   if(!checkIsTrue){
     throw errorMsg[type]
   }
 }
-
-router.get('/',function(req,res){
-  res.send('Amazing')
-})
 
 router.post('/add',function(req,res){
   user = new User;
@@ -23,14 +17,18 @@ router.post('/add',function(req,res){
   user.set(req.body);
   user.generatePassword(req.body.password)
   .then(function(data){
-    data.save()
+    return data.save()
+  })
+  .then(function(){
     res.send(data);
   })
   .catch(function(err){
-    res.status(err[0]).send(err[1])
+    if(err[0]){
+      res.status(err[0]).send(err[1])
+    }
+    res.send(err)
   })
 })
-
 
 router.post('/login',function(req,res){
   User.where({email:req.body.email})

@@ -10,7 +10,7 @@ app.use('/user', require('./routes/user-routes'))
 app.use('/setup', require('./routes/create-tables'))
 
 app.get('/',function(req,res){
-  res.send('Try another url')
+  res.send('<h1>Try another url</h1>')
 })
 
 app.listen(PORT,function(){
