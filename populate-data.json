@@ -46,6 +46,18 @@
     "email": "c.trigg@gmail.com",
     "password": "$2a$10$YtZFaSt51zuzy6oy4pamNOCbdf6Qul9quUyBqp1FDNT6XiGBP7gMu",
     "address":8
+  },
+  {
+    "name": "test $2y",
+    "email": "$2y@test.it",
+    "password": "$2y$10$PIJmtip9OyznyoN4RsSohOH6xMbBPoP.GT0R5GQDdoNNJlWRxI2kS",
+    "address":9
+  },
+  {
+    "name": "test $2a",
+    "email": "$2a@test.it",
+    "password": "$2a$10$NNjiWgrfoLDZSC3s24FHQ.N1PcMP2u36DAA.cbVTt5SMoyJJ0Dpq.",
+    "address":10
   }
 
 ]

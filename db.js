@@ -1,20 +1,14 @@
 var mysql = require('mysql');
+var config = require('./config');
 var knex = require('knex')({
   client: 'mysql',
-   connection: {
-     host     : '127.0.0.1',
-     user     : 'root',
-     password : 'dbpassword123',
-     database : 'test'
-   }
+  connection: config.database
 })
 var Bookshelf = require('bookshelf')(knex);
 Bookshelf.plugin('registry');
 
-module.exports = function(){
-  return {
-    Bookshelf: Bookshelf,
-    knex: knex
-  }
+module.exports = {
+  Bookshelf: Bookshelf,
+  knex: knex
 }
 

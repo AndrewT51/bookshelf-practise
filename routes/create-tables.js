@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 var data = require('../populate-data.json');
-var knex = db().knex;
+var knex = db.knex;
 
 router.get('/maketables', function(req,res){
   knex.schema.createTableIfNotExists('users', function (table) {

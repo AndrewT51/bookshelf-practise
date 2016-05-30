@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var jwt = require('jsonwebtoken');
 var validator = require('validator');
 var errorMsg = require('../errors.json');
+var authorization = require('../auth');
 
 function checkValid(checkIsTrue,type){
   if(!checkIsTrue){
@@ -19,8 +19,9 @@ router.post('/add',function(req,res){
   .then(function(data){
     return data.save()
   })
-  .then(function(){
-    res.send(data);
+  .then(function(user){
+    var token = user.generateJWT();
+    res.send(token)
   })
   .catch(function(err){
     if(err[0]){
@@ -35,18 +36,26 @@ router.post('/login',function(req,res){
   .fetch()
   .then(function(user){
     checkValid(user,1);
-    req.user = user && user.attributes;
+    req.user = user;
     return user && user.validatePassword(req.body.password);
   })
   .then(function(result){
-    delete req.user.password
     checkValid(result,2);
-    var token = jwt.sign(req.user,'secret');
+    var token = req.user.generateJWT();
     res.send(token)
   })
   .catch(function(err){
     res.status(err[0]).send(err[1])
   })
+})
+
+router.get('/secure', authorization, function(req,res){
+  User.where({id: req.user.id})
+  .fetch()
+  .then(function(user){
+    res.send(user)
+  })
+
 })
 
 module.exports = router
