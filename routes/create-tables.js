@@ -15,22 +15,21 @@ router.get('/maketables', function(req,res){
   })
   .createTableIfNotExists('addresses', function (table){
     table.increments();
-    table.integer('house-number',4);
+    table.integer('user_id').unsigned().references('id').inTable('users');
+    table.integer('house_number',4);
     table.string('street',100);
     table.string('city',20);
     table.string('postcode',10);
   })
   .then(function(data){
-    console.log('Table created: ',data);
-    res.send();
+    res.send('Tables created');
   })
 })
 
 router.get('/insertdata',function(req,res){
   knex.insert(data, 'id').into('users')
   .then(function(done){
-    console.log(done);
-    res.send();
+    res.send('Dummy data inserted');
   })
 })
 
